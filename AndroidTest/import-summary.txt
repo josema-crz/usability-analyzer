@@ -1,0 +1,68 @@
+ECLIPSE ANDROID PROJECT IMPORT SUMMARY
+======================================
+
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+* ic_launcher-web.png
+* model\
+* model\log.txt
+* model\model.xmi
+* proguard-project.txt
+
+Replaced Jars with Dependencies:
+--------------------------------
+The importer recognized the following .jar files as third party
+libraries and replaced them with Gradle dependencies instead. This has
+the advantage that more explicit version information is known, and the
+libraries can be updated automatically. However, it is possible that
+the .jar file in your project was of an older version than the
+dependency we picked, which could render the project not compileable.
+You can disable the jar replacement in the import wizard and try again:
+
+android-support-v4.jar => com.android.support:support-v4:18.0.0
+
+Moved Files:
+------------
+Android Gradle projects use a different directory structure than ADT
+Eclipse projects. Here's how the projects were restructured:
+
+* AndroidManifest.xml => app\src\main\AndroidManifest.xml
+* assets\ => app\src\main\assets\
+* libs\android-api.jar => app\libs\android-api.jar
+* libs\android-support-multidex.jar => app\libs\android-support-multidex.jar
+* libs\androidUA.jar => app\libs\androidUA.jar
+* libs\epsilon-1.2-core.jar => app\libs\epsilon-1.2-core.jar
+* libs\epsilon-1.2-emf.jar => app\libs\epsilon-1.2-emf.jar
+* libs\gra2mol.jar => app\libs\gra2mol.jar
+* libs\org.eclipse.core.runtime-3.1.0.jar => app\libs\org.eclipse.core.runtime-3.1.0.jar
+* libs\org.eclipse.emf.common_2.8.0.v20130125-0546.jar => app\libs\org.eclipse.emf.common_2.8.0.v20130125-0546.jar
+* libs\org.eclipse.emf.ecore.xmi_2.8.1.v20130125-0546.jar => app\libs\org.eclipse.emf.ecore.xmi_2.8.1.v20130125-0546.jar
+* libs\org.eclipse.emf.ecore_2.8.3.v20130125-0546.jar => app\libs\org.eclipse.emf.ecore_2.8.3.v20130125-0546.jar
+* libs\org.eclipse.gmt.modisco.OLD.jar => app\libs\org.eclipse.gmt.modisco.OLD.jar
+* libs\org.eclipse.m2m.atl.common_3.2.1.v20110914-0724.jar => app\libs\org.eclipse.m2m.atl.common_3.2.1.v20110914-0724.jar
+* libs\org.eclipse.m2m.atl.core.emf_3.2.1.v20110914-0724.jar => app\libs\org.eclipse.m2m.atl.core.emf_3.2.1.v20110914-0724.jar
+* libs\org.eclipse.m2m.atl.core_3.2.1.v20110914-0724.jar => app\libs\org.eclipse.m2m.atl.core_3.2.1.v20110914-0724.jar
+* libs\org.eclipse.m2m.atl.engine.emfvm.launch_3.2.1.v20110914-0724.jar => app\libs\org.eclipse.m2m.atl.engine.emfvm.launch_3.2.1.v20110914-0724.jar
+* libs\org.eclipse.m2m.atl.engine.emfvm_3.2.1.v20110914-0724.jar => app\libs\org.eclipse.m2m.atl.engine.emfvm_3.2.1.v20110914-0724.jar
+* lint.xml => app\lint.xml
+* res\ => app\src\main\res\
+* src\ => app\src\main\java\
+
+Next Steps:
+-----------
+You can now build the project. The Gradle project needs network
+connectivity to download dependencies.
+
+Bugs:
+-----
+If for some reason your project does not build, and you determine that
+it is due to a bug or limitation of the Eclipse to Gradle importer,
+please file a bug at http://b.android.com with category
+Component-Tools.
+
+(This import summary is for your information only, and can be deleted
+after import once you are satisfied with the results.)

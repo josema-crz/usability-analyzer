@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:modelum="http://modelum.es/atlandmod">
+  <modelum:RelativeLayout parent="/1" height="1038" width="768" id="2131361792" contentDescription="/6" mChildren="/7 /10 /13 /16 /19 /23 /26 /30 /34 /37 /42"/>
+  <modelum:FrameLayout parent="/2" height="1038" width="768" y="146.0" id="16908290" mChildren="/0"/>
+  <modelum:LinearLayout parent="/3" height="1184" width="768" id="-1" mChildren="/4 /1 /5"/>
+  <modelum:UnknownElement type="com.android.internal.policy.impl.PhoneWindow$DecorView"/>
+  <modelum:UnknownElement type="com.android.internal.widget.ActionBarContainer"/>
+  <modelum:UnknownElement type="com.android.internal.widget.ActionBarContainer"/>
+  <modelum:CharSequence content="Layout containing the form"/>
+  <modelum:TextView parent="/0" height="38" width="704" x="32.0" y="32.0" id="2131361793" contentDescription="/8" textSize="28.0" currentTextColor="-13487566" text="/9"/>
+  <modelum:CharSequence content="Label for the first and last name"/>
+  <modelum:CharSequence content="First and last name:"/>
+  <modelum:EditText parent="/0" height="79" width="704" x="32.0" y="90.0" id="2131361794" background="/11" textSize="36.0" currentTextColor="-16777216" text="/12"/>
+  <modelum:StateListDrawable/>
+  <modelum:SpannableStringBuilder content=""/>
+  <modelum:EditText parent="/0" height="79" width="704" x="32.0" y="169.0" id="2131361796" background="/14" textSize="36.0" currentTextColor="-16777216" text="/15"/>
+  <modelum:StateListDrawable/>
+  <modelum:SpannableStringBuilder content=""/>
+  <modelum:TextView parent="/0" height="38" width="704" x="32.0" y="298.0" id="2131361797" contentDescription="/17" textSize="28.0" currentTextColor="-13487566" text="/18"/>
+  <modelum:CharSequence content="Label for the address"/>
+  <modelum:CharSequence content="Address:"/>
+  <modelum:EditText parent="/0" height="79" width="680" x="32.0" y="356.0" id="2131361798" contentDescription="/20" background="/21" textSize="36.0" currentTextColor="-16777216" text="/22"/>
+  <modelum:CharSequence content="Input text for the address"/>
+  <modelum:StateListDrawable/>
+  <modelum:SpannableStringBuilder content=""/>
+  <modelum:TextView parent="/0" height="38" width="704" x="32.0" y="485.0" id="2131361799" contentDescription="/24" textSize="28.0" currentTextColor="-13487566" text="/25"/>
+  <modelum:CharSequence content="Label for the gender"/>
+  <modelum:CharSequence content="Gender:"/>
+  <modelum:RadioButton parent="/0" height="77" width="147" x="32.0" y="543.0" id="2131361800" contentDescription="/27" background="/28" textSize="32.0" currentTextColor="-16777216" text="/29"/>
+  <modelum:CharSequence content="Radio button for the male gender"/>
+  <modelum:NinePatchDrawable/>
+  <modelum:CharSequence content="Male"/>
+  <modelum:RadioButton parent="/0" height="77" width="182" x="221.0" y="551.0" id="2131361801" contentDescription="/31" background="/32" textSize="32.0" currentTextColor="-16777216" text="/33"/>
+  <modelum:CharSequence content="Radio button for the female gender"/>
+  <modelum:NinePatchDrawable/>
+  <modelum:CharSequence content="Female"/>
+  <modelum:TextView parent="/0" height="38" width="704" x="32.0" y="670.0" id="2131361802" contentDescription="/35" textSize="28.0" currentTextColor="-13487566" text="/36"/>
+  <modelum:CharSequence content="Label for the country"/>
+  <modelum:CharSequence content="Country:"/>
+  <modelum:Spinner parent="/0" height="64" width="704" x="32.0" y="728.0" id="2131361795" contentDescription="/38" background="/39" mChildren="/40"/>
+  <modelum:CharSequence content="Dropdown list to select the country"/>
+  <modelum:StateListDrawable/>
+  <modelum:TextView parent="/37" height="28" width="664" x="8.0" y="17.0" id="-1" textSize="20.0" currentTextColor="-13487566" text="/41"/>
+  <modelum:CharSequence content="Canada"/>
+  <modelum:Button parent="/0" height="96" width="704" x="32.0" y="910.0" id="2131361803" contentDescription="/43" background="/44" textSize="32.0" currentTextColor="-5789785" text="/45"/>
+  <modelum:CharSequence content="Button to save the information"/>
+  <modelum:ColorDrawable color="-2500135"/>
+  <modelum:CharSequence content="Save"/>
+</xmi:XMI>

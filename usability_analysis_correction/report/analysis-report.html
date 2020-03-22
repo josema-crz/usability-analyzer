@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es" class="no-js">
+	<head>
+		<meta charset="UTF-8">
+
+		<title>Usability analysis</title>
+		<meta name="description" content="Report listing the usability defects found in the GUI.">
+		<meta name="author" content="José Manuel Cruz Zapata">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="stylesheet" href="css/main.css">
+		
+		<style type="text/css">
+			body
+			{
+				font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;				
+			}
+			h1
+			{				
+				font-size: 16px;
+				margin: 15px;
+				text-align: center;
+			}				
+			h2
+			{				
+				font-size: 13px;
+				margin: 15px;
+				text-align: center;
+			}
+			#subtitle
+			{
+				font-size: 12px;
+				text-align: center;
+			}
+			#usability-defects 
+			{
+				font-size: 12px;
+				margin: 45px auto;
+				width: 80%;
+				text-align: left;
+				border-collapse: collapse;
+			}
+			caption
+			{
+				display: none;
+			}
+			#usability-defects th
+			{
+				font-size: 14px;
+				font-weight: bold;
+				padding: 10px 8px;
+				color: #039;
+				background: #b9c9fe
+			}
+			#usability-defects td
+			{
+				padding: 8px;
+				color: #669;
+			}
+			#usability-defects tr:nth-child(even)
+			{
+				background: #e8edff; 
+			}
+			#usability-defects tr:hover td
+			{
+				background: #d0dafd;
+				color: #339;
+			}
+			#usability-defects td:nth-child(2), #usability-defects td:nth-child(4)
+			{
+				font-weight: bold;
+			}
+			.Low {
+				color: #e6c700;
+			}
+			.Medium {
+				color: #e38d00;
+			}
+			.High {
+				color: #bb3131;
+			}
+	</style>		
+		
+	</head>
+
+	<body>
+		<h1>Usability analysis</h1>
+		<h2>Target GUI: Android GUI</h2>
+		<p id="subtitle">Some usability defects have been detected</p>
+		<table id="usability-defects" summary="table containing the usability defects found in the GUI" >
+			<caption>
+				Usability defects
+			</caption>	
+			<thead>
+				<tr>
+					<th scope="col">Importance</th>
+					<th scope="col">Usability rule</th>
+					<th scope="col">Description</th>
+					<th scope="col">Element</th>
+					<th scope="col">Correct value</th>
+					<th scope="col">Current value</th>
+				</tr>
+			</thead>
+	
+			<tfoot>	        	
+			</tfoot>	
+	
+			<tbody>				
+				<tr>
+					<td><span class="Medium">Medium</span></td>
+					<td>Font sizes</td>
+					<td>Too many distinct font sizes</td>
+					<td>Android GUI</td>
+					<td>1-2 font sizes</td>
+					<td>4 font sizes</td>
+				</tr>
+				<tr>
+					<td><span class="High">High</span></td>
+					<td>Contrast</td>
+					<td>Low contrast between foreground and background colors</td>
+					<td>Button-2131361803</td>
+					<td>4.5-*</td>
+					<td>1.7044491555922558 </td>
+				</tr>
+				<tr>
+					<td><span class="High">High</span></td>
+					<td>Separation</td>
+					<td>The element is too close to other elements in its container</td>
+					<td>EditText-2131361794</td>
+					<td>''</td>
+					<td>EditText-2131361796</td>
+				</tr>
+				<tr>
+					<td><span class="High">High</span></td>
+					<td>Separation</td>
+					<td>The element is too close to other elements in its container</td>
+					<td>EditText-2131361796</td>
+					<td>''</td>
+					<td>EditText-2131361794</td>
+				</tr>
+				<tr>
+					<td><span class="High">High</span></td>
+					<td>Font size</td>
+					<td>Font size is too small</td>
+					<td>Spinner-2131361795</td>
+					<td>24.0-*</td>
+					<td>20.0 </td>
+				</tr>
+				<tr>
+					<td><span class="High">High</span></td>
+					<td>Vertical align</td>
+					<td>The element is not  vertically aligned with other elements in its container</td>
+					<td>RadioButton-2131361800</td>
+					<td>''</td>
+					<td>RadioButton-2131361801</td>
+				</tr>
+				<tr>
+					<td><span class="High">High</span></td>
+					<td>Vertical align</td>
+					<td>The element is not  vertically aligned with other elements in its container</td>
+					<td>RadioButton-2131361801</td>
+					<td>''</td>
+					<td>RadioButton-2131361800</td>
+				</tr>
+				<tr>
+					<td><span class="High">High</span></td>
+					<td>Horizontal align</td>
+					<td>The element is not horizontally aligned with other elements in its container</td>
+					<td>TextView-2131361793</td>
+					<td>''</td>
+					<td>EditText-2131361798</td>
+				</tr>
+				<tr>
+					<td><span class="High">High</span></td>
+					<td>Horizontal align</td>
+					<td>The element is not horizontally aligned with other elements in its container</td>
+					<td>EditText-2131361794</td>
+					<td>''</td>
+					<td>EditText-2131361798</td>
+				</tr>
+				<tr>
+					<td><span class="High">High</span></td>
+					<td>Horizontal align</td>
+					<td>The element is not horizontally aligned with other elements in its container</td>
+					<td>EditText-2131361796</td>
+					<td>''</td>
+					<td>EditText-2131361798</td>
+				</tr>
+				<tr>
+					<td><span class="High">High</span></td>
+					<td>Horizontal align</td>
+					<td>The element is not horizontally aligned with other elements in its container</td>
+					<td>TextView-2131361797</td>
+					<td>''</td>
+					<td>EditText-2131361798</td>
+				</tr>
+				<tr>
+					<td><span class="High">High</span></td>
+					<td>Horizontal align</td>
+					<td>The element is not horizontally aligned with other elements in its container</td>
+					<td>EditText-2131361798</td>
+					<td>''</td>
+					<td>TextView-2131361793,EditText-2131361794,EditText-2131361796,TextView-2131361797,TextView-2131361799,TextView-2131361802,Spinner-2131361795,Button-2131361803</td>
+				</tr>
+				<tr>
+					<td><span class="High">High</span></td>
+					<td>Horizontal align</td>
+					<td>The element is not horizontally aligned with other elements in its container</td>
+					<td>TextView-2131361799</td>
+					<td>''</td>
+					<td>EditText-2131361798</td>
+				</tr>
+				<tr>
+					<td><span class="High">High</span></td>
+					<td>Horizontal align</td>
+					<td>The element is not horizontally aligned with other elements in its container</td>
+					<td>TextView-2131361802</td>
+					<td>''</td>
+					<td>EditText-2131361798</td>
+				</tr>
+				<tr>
+					<td><span class="High">High</span></td>
+					<td>Horizontal align</td>
+					<td>The element is not horizontally aligned with other elements in its container</td>
+					<td>Spinner-2131361795</td>
+					<td>''</td>
+					<td>EditText-2131361798</td>
+				</tr>
+				<tr>
+					<td><span class="High">High</span></td>
+					<td>Horizontal align</td>
+					<td>The element is not horizontally aligned with other elements in its container</td>
+					<td>Button-2131361803</td>
+					<td>''</td>
+					<td>EditText-2131361798</td>
+				</tr>
+				<tr>
+					<td><span class="High">High</span></td>
+					<td>Labeled input</td>
+					<td>This input does not have any label associated</td>
+					<td>EditText-2131361796</td>
+					<td>true</td>
+					<td>false</td>
+				</tr>
+				<tr>
+					<td><span class="Medium">Medium</span></td>
+					<td>Accessibility information</td>
+					<td>Accessibility information has not been set</td>
+					<td>LinearLayout--1</td>
+					<td>true</td>
+					<td>false</td>
+				</tr>
+				<tr>
+					<td><span class="Medium">Medium</span></td>
+					<td>Accessibility information</td>
+					<td>Accessibility information has not been set</td>
+					<td>FrameLayout-16908290</td>
+					<td>true</td>
+					<td>false</td>
+				</tr>
+				<tr>
+					<td><span class="Medium">Medium</span></td>
+					<td>Accessibility information</td>
+					<td>Accessibility information has not been set</td>
+					<td>EditText-2131361794</td>
+					<td>true</td>
+					<td>false</td>
+				</tr>
+				<tr>
+					<td><span class="Medium">Medium</span></td>
+					<td>Accessibility information</td>
+					<td>Accessibility information has not been set</td>
+					<td>EditText-2131361796</td>
+					<td>true</td>
+					<td>false</td>
+				</tr>
+				
+			</tbody>
+		</table>
+	</body>
+</html>
+
+
+
+
+

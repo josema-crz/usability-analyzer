@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="Android-diagram" nsURI="http://modelum.es/atlandmod-diagram"
+    nsPrefix="modelum">
+  <eClassifiers xsi:type="ecore:EClass" name="View" eSuperTypes="#//Object">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parent" lowerBound="1"
+        eType="#//ViewParent"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="height" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="width" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="x" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="y" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="contentDescription" lowerBound="1"
+        eType="#//CharSequence"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="background" lowerBound="1"
+        eType="#//Drawable"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AbsListView" abstract="true" eSuperTypes="#//AdapterView"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Drawable" abstract="true" eSuperTypes="#//Object"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ViewGroup" abstract="true" eSuperTypes="#//View #//ViewParent">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mChildren" upperBound="-1"
+        eType="#//View"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ViewParent" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SpinnerAdapter" abstract="true" eSuperTypes="#//Adapter"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Adapter" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ListView" eSuperTypes="#//AbsListView">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="adapter" eType="#//ListAdapter"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ListAdapter" abstract="true" eSuperTypes="#//Adapter"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AdapterView" abstract="true" eSuperTypes="#//ViewGroup"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Button" eSuperTypes="#//TextView"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TextView" eSuperTypes="#//View">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="textSize" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="currentTextColor" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="text" lowerBound="1" eType="#//CharSequence"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FrameLayout" eSuperTypes="#//ViewGroup"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LinearLayout" eSuperTypes="#//ViewGroup"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ColorDrawable" eSuperTypes="#//Drawable">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="color" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EditText" eSuperTypes="#//TextView"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AbsSpinner" abstract="true" eSuperTypes="#//AdapterView"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ArrayAdapter" eSuperTypes="#//BaseAdapter">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mObjects" upperBound="-1">
+      <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EEList">
+        <eTypeArguments/>
+      </eGenericType>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BaseAdapter" abstract="true" eSuperTypes="#//Object #//ListAdapter #//SpinnerAdapter"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CheckBox" eSuperTypes="#//CompoundButton"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CompoundButton" abstract="true" eSuperTypes="#//Button"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RelativeLayout" eSuperTypes="#//ViewGroup"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ImageView" eSuperTypes="#//View"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RadioButton" eSuperTypes="#//CompoundButton"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Spinner" eSuperTypes="#//AbsSpinner">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="adapter" eType="#//Adapter"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Object"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CharSequence">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="content" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UnknownElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+</ecore:EPackage>

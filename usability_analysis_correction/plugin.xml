@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated usability_analyzer -->
+      <package
+            uri="http://usability_analyzer/1.0"
+            class="usability_analyzer.Usability_analyzerPackage"
+            genModel="metamodels/usability_analyzer.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated usability_rules -->
+      <package
+            uri="http://usability_rules/1.0"
+            class="usability_rules.Usability_rulesPackage"
+            genModel="metamodels/usability_rules.genmodel"/>
+   </extension>
+
+</plugin>

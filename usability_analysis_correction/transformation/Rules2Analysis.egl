@@ -1,0 +1,110 @@
+pre createEvaluation {
+	var evaluation = new AnalysisDefects!Evaluation;
+	evaluation.guiName = UsabilityGUI!GUI.allInstances().first().guiElement.name;
+}
+
+post evaluationDone {
+	System.user.inform("Usability analysis finalized. A report has been generated.");	
+}
+
+operation String getR() : Integer {
+	return self.substring(1,3).hexToInt();
+}
+
+operation String getG() : Integer {
+	return self.substring(3,5).hexToInt();
+}
+
+operation String getB() : Integer {
+	return self.substring(5,7).hexToInt();
+}
+
+operation String hexToInt() : Integer {
+	var eqs = new Map;
+	eqs.put("A", 10); eqs.put("a", 10);
+	eqs.put("B", 11); eqs.put("b", 11);
+	eqs.put("C", 12); eqs.put("c", 12);
+	eqs.put("D", 13); eqs.put("d", 13);
+	eqs.put("E", 14); eqs.put("e", 14);
+	eqs.put("F", 15); eqs.put("f", 15);
+	
+	var chars = self.toCharSequence().invert();
+	
+	var number = new Integer;
+	var result = 0;
+	for (i in Sequence {0..chars.size()-1}) {
+		var char = chars.get(i);
+		if (eqs.containsKey(char))
+			number = eqs.get(char);
+		else
+			number = char.asInteger();
+			
+		result = result + number * 16.pow(i);
+	}
+
+	return result.asInteger();
+}
+
+operation String getLuminance() : Real {
+	var initialValues = Sequence{self.getR(), self.getG(), self.getB()};
+	var finalValues = new Sequence;
+	
+	for (value : Integer in initialValues) {
+		var finalValue = value.asReal()/255;
+		if (finalValue <= 0.03928)
+			finalValue = finalValue/12.92;
+		else
+			finalValue = ((finalValue+0.055)/1.055).pow(2.4);
+			
+		finalValues.add(finalValue);
+	}
+	
+	return finalValues.first()*0.2126 + finalValues.second()*0.7152 + finalValues.third()*0.0722;
+}
+
+
+[% for (rule in Catalogue!Rule.allInstances()) { %]
+
+[%if(rule.restriction.isDefined()) { %]
+operation [%=rule.name.replace(' ', '_')%]_restriction(usabilityElement : UsabilityGUI![%=rule.elementType%]) {
+	[%=rule.restriction.code%]
+}
+[% } %]
+
+operation [%=rule.name.replace(' ', '_')%]_calculation(usabilityElement : UsabilityGUI![%=rule.elementType%])
+	: [% switch (rule.range.type().name) { case "IntegerRange" : out.print("Integer"); case "DoubleRange" : out.print("Real"); case "BooleanRange" : out.print("Boolean"); case "StringRange" : out.print("String"); } %] {
+	[%=rule.calculation.code%]
+}
+
+@greedy
+rule [%=rule.name.replace(' ', '_')%]
+    transform usabilityElement : UsabilityGUI![%=rule.elementType%]
+	to defect : AnalysisDefects!Defect { 
+	
+	guard : [%if(rule.restriction.isDefined()) { %] [%=rule.name.replace(' ', '_')%]_restriction(usabilityElement) and [% } %] 
+			not([%if (rule.range.isKindOf(IntegerRange)) { %]
+[%=rule.name.replace(' ', '_')%]_calculation(usabilityElement) >= [%=rule.range.min%][%if (rule.range.max <> -1) { %] and [%=rule.name.replace(' ', '_')%]_calculation(usabilityElement) <= [%=rule.range.max%][% } %])
+			[%} else if (rule.range.isKindOf(DoubleRange)) { %]
+[%=rule.name.replace(' ', '_')%]_calculation(usabilityElement) >= [%=rule.range.min%][%if (rule.range.max <> -1) { %] and [%=rule.name.replace(' ', '_')%]_calculation(usabilityElement) <= [%=rule.range.max%][% } %])
+			[%} else if (rule.range.isKindOf(BooleanRange)) { %]
+[%=rule.name.replace(' ', '_')%]_calculation(usabilityElement) == [%=rule.range.correctValue%])
+			[%} else if (rule.range.isKindOf(StringRange) and rule.range.correctValues <> '""' ) { %]
+Sequence{[%=rule.range.correctValues%]}.includes([%=rule.name.replace(' ', '_')%]_calculation(usabilityElement)))
+			[% } else { %]false)
+			[% } %]	
+		defect.description = "[%=rule.description.errorMessage%]";
+		defect.importance = AnalysisDefects!Importance#[%=rule.importance%];
+		defect.usabilityRule = "[%=rule.name%]";
+		defect.value = [%=rule.name.replace(' ', '_')%]_calculation(usabilityElement).asString()[%if (rule.range.hasProperty("unit")) { %] + " [%=rule.range.unit%]"[% } %];
+		defect.correctValue = [%if (rule.range.isKindOf(IntegerRange)) { %]"[%=rule.range.min%]-[%if (rule.range.max == -1) { %]*[%} else { %][%=rule.range.max%][% } %][%if (rule.range.unit.isDefined()) { %] [%=rule.range.unit%][% } %]"; 
+			[%} else if (rule.range.isKindOf(DoubleRange)) { %]"[%=rule.range.min%]-[%if (rule.range.max == -1) { %]*[%} else { %][%=rule.range.max%][% } %][%if (rule.range.unit.isDefined()) { %] [%=rule.range.unit%][% } %]";
+			[%} else if (rule.range.isKindOf(BooleanRange)) { %]"[%=rule.range.correctValue%]";
+			[%} else if (rule.range.isKindOf(StringRange)) { %]"[%=rule.range.correctValues%]";
+			[% } %]
+		defect.element = usabilityElement.guiElement.name;
+		
+		evaluation.defects.add(defect);
+	} 
+	
+	
+[% } %]

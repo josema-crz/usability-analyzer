@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es" class="no-js">
+	<head>
+		<meta charset="UTF-8">
+
+		<title>Usability correction</title>
+		<meta name="description" content="Report listing the usability defects in the GUI, indicating whether they have been corrected or not.">
+		<meta name="author" content="José Manuel Cruz Zapata">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="stylesheet" href="css/main.css">
+		
+		<style type="text/css">
+			body
+			{
+				font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;				
+			}
+			h1
+			{				
+				font-size: 16px;
+				margin: 15px;
+				text-align: center;
+			}
+			h2
+			{				
+				font-size: 13px;
+				margin: 15px;
+				text-align: center;
+			}				
+			#subtitle
+			{
+				font-size: 12px;
+				text-align: center;
+			}
+			#usability-defects 
+			{
+				font-size: 12px;
+				margin: 45px auto;
+				width: 80%;
+				text-align: left;
+				border-collapse: collapse;
+			}
+			caption
+			{
+				display: none;
+			}
+			#usability-defects th
+			{
+				font-size: 14px;
+				font-weight: bold;
+				padding: 10px 8px;
+				color: #039;
+				background: #b9c9fe
+			}
+			#usability-defects td
+			{
+				padding: 8px;
+				color: #669;
+			}
+			#usability-defects tr:nth-child(even)
+			{
+				background: #e8edff; 
+			}
+			#usability-defects tr:hover td
+			{
+				background: #d0dafd;
+				color: #339;
+			}
+			#usability-defects td:nth-child(2), #usability-defects td:nth-child(4)
+			{
+				font-weight: bold;
+			}
+			.correction-true {
+				color: #318e34;
+			}
+			.correction-false {
+				color: #bb3131;
+			}
+	</style>		
+		
+	</head>
+
+	<body>
+		<h1>Usability correction</h1>
+		<h2>Target GUI: [%=Evaluation.allInstances().first().guiName%]</h2>
+		[% if (Defect.allInstances().isEmpty()) { %]
+		<p id="subtitle">No usability defects have been found</p>
+		[% } else { %]
+		<p id="subtitle">Results of the usability correction process</p>
+		<table id="usability-defects" summary="table containing the usability defects found in the GUI and the result of the correction" >
+			<caption>
+				Usability defects correction
+			</caption>	
+			<thead>
+				<tr>
+					<th scope="col">Usability rule</th>
+					<th scope="col">Description</th>
+					<th scope="col">Element</th>
+					<th scope="col">State</th>
+				</tr>
+			</thead>
+	
+			<tfoot>	        	
+			</tfoot>	
+	
+			<tbody>				
+				[% for (defect in Defect.allInstances()) { %]
+				<tr>
+					<td>[%=defect.usabilityRule%]</td>
+					<td>[%=defect.description%]</td>
+					<td>[%=defect.element%]</td>
+					<td><span class="correction-[%=defect.corrected%]">[% if (defect.corrected) { %]Corrected[% } else { %]Not corrected[% } %]</span></td>
+				</tr>
+				[% } %]				
+			</tbody>
+		</table>
+		[% } %]
+	</body>
+</html>

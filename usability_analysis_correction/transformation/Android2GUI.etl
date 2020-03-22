@@ -1,0 +1,177 @@
+pre init {
+	// We create a default GUI and main window.
+	// Ideally the information about the GUI and main window would be
+	// extracted from the Android application and View, but the View
+	// class is defined by the user and different in each app so we
+	// can't include it in the injection process.
+	var gui = new GUI!GUI; 
+	gui.name = "Android GUI";
+	
+	var window = new GUI!Window;
+	window.name = "Android Main Window";
+		
+	// The main window will contain the outermost ViewGroup, that is,
+	// the one without a defined parent
+	window.content ::= Android!ViewGroup.allInstances().
+		select(mainView | mainView.parent.isKindOf(Android!UnknownElement));
+		
+	gui.windows.add(window);	
+}
+
+
+@abstract
+rule View2Component
+	transform view : Android!View
+	to component : GUI!Component {
+		component.name = view.type().name + "-" + view.id;
+		var position = new GUI!Position;
+		position.x = view.x.round();
+		position.y = view.y.round();
+		component.position = position;
+		var dimension = new GUI!Dimension;
+		dimension.height = view.height;
+		dimension.width = view.width;
+		component.dimension = dimension;
+		// We always create an AccessibilityInfo property associated to the component,
+		// even if its content is empty.
+		var accessibilityInfo = new GUI!AccessibilityInfo;
+		if (view.contentDescription.isDefined())
+			accessibilityInfo.text = view.contentDescription.toString();
+		else
+			accessibilityInfo.text = "";
+		component.accessibilityInfo = accessibilityInfo;
+	}
+
+
+
+// We translate every ViewGroup to a Frame, except for Lists and Spinners, which
+// are also ViewGroups but have their own specific mappings
+@lazy
+@greedy
+rule ViewGroup2Frame
+    transform viewGroup : Android!ViewGroup
+	to frame : GUI!Frame 
+	extends View2Component {
+		guard: viewGroup.isKindOf(Android!Spinner) <> true and viewGroup.isKindOf(Android!ListView) <> true
+		
+		frame.content ::= viewGroup.mChildren;			
+	} 
+
+@abstract
+rule TextView2Component
+	transform textView : Android!TextView
+	to component : GUI!Component
+	extends View2Component {
+		var font = new GUI!Font;
+		font.family = "Default family";
+		font.size = textView.textSize;
+		component.font = font;
+		component.text = textView.text.content;
+		
+				
+		var color = new GUI!Color;
+		color.foreground = '#' + Native("java.lang.Integer").toHexString(textView.currentTextColor).toUpperCase().substring(2);
+		
+		// TextViews will always have a foreground color, but not always a plain background color.
+		if (textView.background <> null and textView.background.isKindOf(Android!ColorDrawable)) {
+			color.background = '#' + Native("java.lang.Integer").toHexString(textView.background.color).toUpperCase().substring(2);
+		}
+		
+		component.color = color;
+	}
+	
+@lazy
+rule TextView2Label
+	transform textView : Android!TextView
+	to label : GUI!Label
+	extends TextView2Component {
+				
+	}
+	
+@lazy
+rule EditText2Input
+	transform editText : Android!EditText
+	to input : GUI!Input
+	extends TextView2Component {
+				
+	}
+	
+@lazy
+rule Button2Button
+	transform androidButton : Android!Button
+	to guiButton : GUI!Button
+	extends TextView2Component {
+						
+	}
+	
+@lazy
+rule RadioButton2RadioButton
+	transform androidRadioButton : Android!RadioButton
+	to guiRadioButton : GUI!RadioButton
+	extends TextView2Component {
+						
+	}
+	
+@lazy
+rule CheckBox2CheckBox
+	transform androidCheckBox : Android!CheckBox
+	to guiCheckBox : GUI!CheckBox
+	extends TextView2Component {
+						
+	}
+	
+@lazy
+rule ImageView2Image
+	transform androidImage : Android!ImageView
+	to guiImage : GUI!Image
+	extends View2Component {
+						
+	}
+	
+@lazy
+rule Spinner2ComboBox
+	transform spinner : Android!Spinner
+	to comboBox : GUI!ComboBox
+	extends View2Component {
+		// Sacamos las propiedades de fuente y color del ítem hijo
+		
+		var item = spinner.mChildren[0];
+	
+		var font = new GUI!Font;
+		font.family = "Default family";
+		font.size = item.textSize;
+		comboBox.font = font;		
+				
+		var color = new GUI!Color;
+		color.foreground = '#' + Native("java.lang.Integer").toHexString(item.currentTextColor).toUpperCase().substring(2);
+		
+		if (item.background <> null and item.background.isKindOf(Android!ColorDrawable)) {
+			color.background = '#' + Native("java.lang.Integer").toHexString(item.background.color).toUpperCase().substring(2);
+		}
+		
+		comboBox.color = color;					
+	}
+	
+@lazy
+rule ListView2List
+	transform listView : Android!ListView
+	to list : GUI!`List`
+	extends View2Component {
+		// Sacamos las propiedades de fuente y color del ítem hijo
+		
+		var item = listView.mChildren[0];
+	
+		var font = new GUI!Font;
+		font.family = "Default family";
+		font.size = item.textSize;
+		list.font = font;		
+				
+		var color = new GUI!Color;
+		color.foreground = '#' + Native("java.lang.Integer").toHexString(item.currentTextColor).toUpperCase().substring(2);
+		
+		if (item.background <> null and item.background.isKindOf(Android!ColorDrawable)) {
+			color.background = '#' + Native("java.lang.Integer").toHexString(item.background.color).toUpperCase().substring(2);
+		}
+		
+		list.color = color;					
+	}

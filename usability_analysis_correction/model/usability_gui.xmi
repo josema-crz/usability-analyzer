@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:usability_gui="http://usability_gui/1.0">
+  <usability_gui:GUI elements="/1">
+    <guiElement href="android_gui.xmi#/"/>
+  </usability_gui:GUI>
+  <usability_gui:Container>
+    <guiElement href="android_gui.xmi#//@windows.0"/>
+    <content xsi:type="usability_gui:Box" container="/1">
+      <guiElement href="android_gui.xmi#//@windows.0/@content.0"/>
+      <dimension x="768" y="1184"/>
+      <position/>
+    </content>
+    <content xsi:type="usability_gui:AccessibilityInformation" info="">
+      <guiElement href="android_gui.xmi#//@windows.0/@content.0"/>
+    </content>
+    <content xsi:type="usability_gui:Container">
+      <guiElement href="android_gui.xmi#//@windows.0/@content.0"/>
+      <content xsi:type="usability_gui:Box" container="/1/@content.2">
+        <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0"/>
+        <dimension x="768" y="1038"/>
+        <position y="146"/>
+      </content>
+      <content xsi:type="usability_gui:AccessibilityInformation" info="">
+        <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0"/>
+      </content>
+      <content xsi:type="usability_gui:Container">
+        <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0"/>
+        <content xsi:type="usability_gui:Box" container="/1/@content.2/@content.2">
+          <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0"/>
+          <dimension x="768" y="1038"/>
+          <position/>
+        </content>
+        <content xsi:type="usability_gui:AccessibilityInformation" info="org.eclipse.emf.ecore.impl.DynamicEObjectImpl@52446bb2 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@63bb3a23 (name: CharSequence) (instanceClassName: null) (abstract: false, interface: false))">
+          <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0"/>
+        </content>
+        <content xsi:type="usability_gui:Container">
+          <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0"/>
+          <content xsi:type="usability_gui:Box" container="/1/@content.2/@content.2/@content.2">
+            <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0/@content.0"/>
+            <dimension x="704" y="38"/>
+            <position x="32" y="32"/>
+          </content>
+          <content xsi:type="usability_gui:Color" foreground="#323232">
+            <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0/@content.0"/>
+          </content>
+          <content xsi:type="usability_gui:AccessibilityInformation" info="org.eclipse.emf.ecore.impl.DynamicEObjectImpl@5c03ff84 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@63bb3a23 (name: CharSequence) (instanceClassName: null) (abstract: false, interface: false))">
+            <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0/@content.0"/>
+          </content>
+          <content xsi:type="usability_gui:Text" size="28.0" font="Default family" text="First and last name:">
+            <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0/@content.0"/>
+          </content>
+          <content xsi:type="usability_gui:Label" box="/1/@content.2/@content.2/@content.2/@content.0" text="/1/@content.2/@content.2/@content.2/@content.3">
+            <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0/@content.0"/>
+          </content>
+          <content xsi:type="usability_gui:Box" container="/1/@content.2/@content.2/@content.2">
+            <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0/@content.1"/>
+            <dimension x="704" y="79"/>
+            <position x="32" y="90"/>
+          </content>
+          <content xsi:type="usability_gui:Color" foreground="#000000">
+            <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0/@content.1"/>
+          </content>
+          <content xsi:type="usability_gui:AccessibilityInformation" info="">
+            <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0/@content.1"/>
+          </content>
+          <content xsi:type="usability_gui:Text" size="36.0" font="Default family" text="">
+            <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0/@content.1"/>
+          </content>
+          <content xsi:type="usability_gui:Input" box="/1/@content.2/@content.2/@content.2/@content.5" label="/1/@content.2/@content.2/@content.2/@content.4">
+            <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0/@content.1"/>
+          </content>
+          <content xsi:type="usability_gui:Box" container="/1/@content.2/@content.2/@content.2">
+            <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0/@content.2"/>
+            <dimension x="704" y="79"/>
+            <position x="32" y="169"/>
+          </content>
+          <content xsi:type="usability_gui:Color" foreground="#000000">
+            <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0/@content.2"/>
+          </content>
+          <content xsi:type="usability_gui:AccessibilityInformation" info="">
+            <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0/@content.2"/>
+          </content>
+          <content xsi:type="usability_gui:Text" size="36.0" font="Default family" text="">
+            <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0/@content.2"/>
+          </content>
+          <content xsi:type="usability_gui:Input" box="/1/@content.2/@content.2/@content.2/@content.10">
+            <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0/@content.2"/>
+          </content>
+          <content xsi:type="usability_gui:Box" container="/1/@content.2/@content.2/@content.2">
+            <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0/@content.3"/>
+            <dimension x="704" y="38"/>
+            <position x="32" y="298"/>
+          </content>
+          <content xsi:type="usability_gui:Color" foreground="#323232">
+            <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0/@content.3"/>
+          </content>
+          <content xsi:type="usability_gui:AccessibilityInformation" info="org.eclipse.emf.ecore.impl.DynamicEObjectImpl@3259e78b (eClass: org.eclipse.emf.ecore.impl.EClassImpl@63bb3a23 (name: CharSequence) (instanceClassName: null) (abstract: false, interface: false))">
+            <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0/@content.3"/>
+          </content>
+          <content xsi:type="usability_gui:Text" size="28.0" font="Default family" text="Address:">
+            <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0/@content.3"/>
+          </content>
+          <content xsi:type="usability_gui:Label" box="/1/@content.2/@content.2/@content.2/@content.15" text="/1/@content.2/@content.2/@content.2/@content.18">
+            <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0/@content.3"/>
+          </content>
+          <content xsi:type="usability_gui:Box" container="/1/@content.2/@content.2/@content.2">
+            <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0/@content.4"/>
+            <dimension x="680" y="79"/>
+            <position x="32" y="356"/>
+          </content>
+          <content xsi:type="usability_gui:Color" foreground="#000000">
+            <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0/@content.4"/>
+          </content>
+          <content xsi:type="usability_gui:AccessibilityInformation" info="org.eclipse.emf.ecore.impl.DynamicEObjectImpl@1e8572a1 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@63bb3a23 (name: CharSequence) (instanceClassName: null) (abstract: false, interface: false))">
+            <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0/@content.4"/>
+          </content>
+          <content xsi:type="usability_gui:Text" size="36.0" font="Default family" text="">
+            <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0/@content.4"/>
+          </content>
+          <content xsi:type="usability_gui:Input" box="/1/@content.2/@content.2/@content.2/@content.20" label="/1/@content.2/@content.2/@content.2/@content.19">
+            <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0/@content.4"/>
+          </content>
+          <content xsi:type="usability_gui:Box" container="/1/@content.2/@content.2/@content.2">
+            <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0/@content.5"/>
+            <dimension x="704" y="38"/>
+            <position x="32" y="485"/>
+          </content>
+          <content xsi:type="usability_gui:Color" foreground="#323232">
+            <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0/@content.5"/>
+          </content>
+          <content xsi:type="usability_gui:AccessibilityInformation" info="org.eclipse.emf.ecore.impl.DynamicEObjectImpl@7f865838 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@63bb3a23 (name: CharSequence) (instanceClassName: null) (abstract: false, interface: false))">
+            <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0/@content.5"/>
+          </content>
+          <content xsi:type="usability_gui:Text" size="28.0" font="Default family" text="Gender:">
+            <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0/@content.5"/>
+          </content>
+          <content xsi:type="usability_gui:Label" box="/1/@content.2/@content.2/@content.2/@content.25" text="/1/@content.2/@content.2/@content.2/@content.28">
+            <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0/@content.5"/>
+          </content>
+          <content xsi:type="usability_gui:Box" container="/1/@content.2/@content.2/@content.2">
+            <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0/@content.6"/>
+            <dimension x="147" y="77"/>
+            <position x="32" y="543"/>
+          </content>
+          <content xsi:type="usability_gui:Color" foreground="#000000">
+            <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0/@content.6"/>
+          </content>
+          <content xsi:type="usability_gui:AccessibilityInformation" info="org.eclipse.emf.ecore.impl.DynamicEObjectImpl@1ab51927 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@63bb3a23 (name: CharSequence) (instanceClassName: null) (abstract: false, interface: false))">
+            <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0/@content.6"/>
+          </content>
+          <content xsi:type="usability_gui:Text" size="32.0" font="Default family" text="Male">
+            <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0/@content.6"/>
+          </content>
+          <content xsi:type="usability_gui:Box" container="/1/@content.2/@content.2/@content.2">
+            <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0/@content.7"/>
+            <dimension x="182" y="77"/>
+            <position x="221" y="551"/>
+          </content>
+          <content xsi:type="usability_gui:Color" foreground="#000000">
+            <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0/@content.7"/>
+          </content>
+          <content xsi:type="usability_gui:AccessibilityInformation" info="org.eclipse.emf.ecore.impl.DynamicEObjectImpl@59761398 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@63bb3a23 (name: CharSequence) (instanceClassName: null) (abstract: false, interface: false))">
+            <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0/@content.7"/>
+          </content>
+          <content xsi:type="usability_gui:Text" size="32.0" font="Default family" text="Female">
+            <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0/@content.7"/>
+          </content>
+          <content xsi:type="usability_gui:Box" container="/1/@content.2/@content.2/@content.2">
+            <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0/@content.8"/>
+            <dimension x="704" y="38"/>
+            <position x="32" y="670"/>
+          </content>
+          <content xsi:type="usability_gui:Color" foreground="#323232">
+            <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0/@content.8"/>
+          </content>
+          <content xsi:type="usability_gui:AccessibilityInformation" info="org.eclipse.emf.ecore.impl.DynamicEObjectImpl@47347d87 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@63bb3a23 (name: CharSequence) (instanceClassName: null) (abstract: false, interface: false))">
+            <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0/@content.8"/>
+          </content>
+          <content xsi:type="usability_gui:Text" size="28.0" font="Default family" text="Country:">
+            <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0/@content.8"/>
+          </content>
+          <content xsi:type="usability_gui:Label" box="/1/@content.2/@content.2/@content.2/@content.38" text="/1/@content.2/@content.2/@content.2/@content.41">
+            <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0/@content.8"/>
+          </content>
+          <content xsi:type="usability_gui:Box" container="/1/@content.2/@content.2/@content.2">
+            <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0/@content.9"/>
+            <dimension x="704" y="64"/>
+            <position x="32" y="728"/>
+          </content>
+          <content xsi:type="usability_gui:Color" foreground="#323232">
+            <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0/@content.9"/>
+          </content>
+          <content xsi:type="usability_gui:AccessibilityInformation" info="org.eclipse.emf.ecore.impl.DynamicEObjectImpl@5c4ca5c2 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@63bb3a23 (name: CharSequence) (instanceClassName: null) (abstract: false, interface: false))">
+            <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0/@content.9"/>
+          </content>
+          <content xsi:type="usability_gui:Container">
+            <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0/@content.9"/>
+          </content>
+          <content xsi:type="usability_gui:Text" size="20.0" font="Default family">
+            <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0/@content.9"/>
+          </content>
+          <content xsi:type="usability_gui:Box" container="/1/@content.2/@content.2/@content.2">
+            <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0/@content.10"/>
+            <dimension x="704" y="96"/>
+            <position x="32" y="910"/>
+          </content>
+          <content xsi:type="usability_gui:Color" background="#D9D9D9" foreground="#A7A7A7">
+            <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0/@content.10"/>
+          </content>
+          <content xsi:type="usability_gui:AccessibilityInformation" info="org.eclipse.emf.ecore.impl.DynamicEObjectImpl@1c5ff9f5 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@63bb3a23 (name: CharSequence) (instanceClassName: null) (abstract: false, interface: false))">
+            <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0/@content.10"/>
+          </content>
+          <content xsi:type="usability_gui:Text" size="32.0" font="Default family" text="Save">
+            <guiElement href="android_gui.xmi#//@windows.0/@content.0/@content.0/@content.0/@content.10"/>
+          </content>
+        </content>
+      </content>
+    </content>
+  </usability_gui:Container>
+</xmi:XMI>

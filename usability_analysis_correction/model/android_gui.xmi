@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="ASCII"?>
+<gui:GUI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gui="http://interface/1.1" name="Android GUI">
+  <windows name="Android Main Window">
+    <content xsi:type="gui:Frame" name="LinearLayout--1">
+      <dimension height="1184" width="768"/>
+      <position/>
+      <accessibilityInfo text=""/>
+      <content xsi:type="gui:Frame" name="FrameLayout-16908290">
+        <dimension height="1038" width="768"/>
+        <position y="146"/>
+        <accessibilityInfo text=""/>
+        <content xsi:type="gui:Frame" name="RelativeLayout-2131361792">
+          <dimension height="1038" width="768"/>
+          <position/>
+          <accessibilityInfo text="org.eclipse.emf.ecore.impl.DynamicEObjectImpl@52446bb2 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@63bb3a23 (name: CharSequence) (instanceClassName: null) (abstract: false, interface: false))"/>
+          <content xsi:type="gui:Label" name="TextView-2131361793" text="First and last name:">
+            <dimension height="38" width="704"/>
+            <font family="Default family" size="28.0"/>
+            <color foreground="#323232"/>
+            <position x="32" y="32"/>
+            <accessibilityInfo text="org.eclipse.emf.ecore.impl.DynamicEObjectImpl@5c03ff84 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@63bb3a23 (name: CharSequence) (instanceClassName: null) (abstract: false, interface: false))"/>
+          </content>
+          <content xsi:type="gui:Input" name="EditText-2131361794" text="">
+            <dimension height="79" width="704"/>
+            <font family="Default family" size="36.0"/>
+            <color foreground="#000000"/>
+            <position x="32" y="90"/>
+            <accessibilityInfo text=""/>
+          </content>
+          <content xsi:type="gui:Input" name="EditText-2131361796" text="">
+            <dimension height="79" width="704"/>
+            <font family="Default family" size="36.0"/>
+            <color foreground="#000000"/>
+            <position x="32" y="169"/>
+            <accessibilityInfo text=""/>
+          </content>
+          <content xsi:type="gui:Label" name="TextView-2131361797" text="Address:">
+            <dimension height="38" width="704"/>
+            <font family="Default family" size="28.0"/>
+            <color foreground="#323232"/>
+            <position x="32" y="298"/>
+            <accessibilityInfo text="org.eclipse.emf.ecore.impl.DynamicEObjectImpl@3259e78b (eClass: org.eclipse.emf.ecore.impl.EClassImpl@63bb3a23 (name: CharSequence) (instanceClassName: null) (abstract: false, interface: false))"/>
+          </content>
+          <content xsi:type="gui:Input" name="EditText-2131361798" text="">
+            <dimension height="79" width="680"/>
+            <font family="Default family" size="36.0"/>
+            <color foreground="#000000"/>
+            <position x="32" y="356"/>
+            <accessibilityInfo text="org.eclipse.emf.ecore.impl.DynamicEObjectImpl@1e8572a1 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@63bb3a23 (name: CharSequence) (instanceClassName: null) (abstract: false, interface: false))"/>
+          </content>
+          <content xsi:type="gui:Label" name="TextView-2131361799" text="Gender:">
+            <dimension height="38" width="704"/>
+            <font family="Default family" size="28.0"/>
+            <color foreground="#323232"/>
+            <position x="32" y="485"/>
+            <accessibilityInfo text="org.eclipse.emf.ecore.impl.DynamicEObjectImpl@7f865838 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@63bb3a23 (name: CharSequence) (instanceClassName: null) (abstract: false, interface: false))"/>
+          </content>
+          <content xsi:type="gui:RadioButton" name="RadioButton-2131361800" text="Male">
+            <dimension height="77" width="147"/>
+            <font family="Default family" size="32.0"/>
+            <color foreground="#000000"/>
+            <position x="32" y="543"/>
+            <accessibilityInfo text="org.eclipse.emf.ecore.impl.DynamicEObjectImpl@1ab51927 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@63bb3a23 (name: CharSequence) (instanceClassName: null) (abstract: false, interface: false))"/>
+          </content>
+          <content xsi:type="gui:RadioButton" name="RadioButton-2131361801" text="Female">
+            <dimension height="77" width="182"/>
+            <font family="Default family" size="32.0"/>
+            <color foreground="#000000"/>
+            <position x="221" y="551"/>
+            <accessibilityInfo text="org.eclipse.emf.ecore.impl.DynamicEObjectImpl@59761398 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@63bb3a23 (name: CharSequence) (instanceClassName: null) (abstract: false, interface: false))"/>
+          </content>
+          <content xsi:type="gui:Label" name="TextView-2131361802" text="Country:">
+            <dimension height="38" width="704"/>
+            <font family="Default family" size="28.0"/>
+            <color foreground="#323232"/>
+            <position x="32" y="670"/>
+            <accessibilityInfo text="org.eclipse.emf.ecore.impl.DynamicEObjectImpl@47347d87 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@63bb3a23 (name: CharSequence) (instanceClassName: null) (abstract: false, interface: false))"/>
+          </content>
+          <content xsi:type="gui:ComboBox" name="Spinner-2131361795">
+            <dimension height="64" width="704"/>
+            <font family="Default family" size="20.0"/>
+            <color foreground="#323232"/>
+            <position x="32" y="728"/>
+            <accessibilityInfo text="org.eclipse.emf.ecore.impl.DynamicEObjectImpl@5c4ca5c2 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@63bb3a23 (name: CharSequence) (instanceClassName: null) (abstract: false, interface: false))"/>
+          </content>
+          <content xsi:type="gui:Button" name="Button-2131361803" text="Save">
+            <dimension height="96" width="704"/>
+            <font family="Default family" size="32.0"/>
+            <color foreground="#A7A7A7" background="#D9D9D9"/>
+            <position x="32" y="910"/>
+            <accessibilityInfo text="org.eclipse.emf.ecore.impl.DynamicEObjectImpl@1c5ff9f5 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@63bb3a23 (name: CharSequence) (instanceClassName: null) (abstract: false, interface: false))"/>
+          </content>
+        </content>
+      </content>
+    </content>
+  </windows>
+</gui:GUI>

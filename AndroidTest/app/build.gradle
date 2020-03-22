@@ -1,0 +1,37 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 14
+    buildToolsVersion "21.1.2"
+
+    defaultConfig {
+        applicationId "com.example.android.test"
+        minSdkVersion 14
+        targetSdkVersion 14
+        // Enabling multidex support.
+        multiDexEnabled true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+}
+
+dependencies {
+    compile 'com.android.support:support-v4:18.0.0'
+    compile files('libs/androidUA.injection.jar')
+    compile files('libs/gra2mol.jar')
+    compile files('libs/org.eclipse.core.runtime-3.1.0.jar')
+    compile files('libs/org.eclipse.emf.common_2.8.0.v20130125-0546.jar')
+    compile files('libs/org.eclipse.emf.ecore.xmi_2.8.1.v20130125-0546.jar')
+    compile files('libs/org.eclipse.emf.ecore_2.8.3.v20130125-0546.jar')
+    compile files('libs/org.eclipse.gmt.modisco.OLD.jar')
+    compile files('libs/org.eclipse.m2m.atl.common_3.2.1.v20110914-0724.jar')
+    compile files('libs/org.eclipse.m2m.atl.core.emf_3.2.1.v20110914-0724.jar')
+    compile files('libs/org.eclipse.m2m.atl.core_3.2.1.v20110914-0724.jar')
+    compile files('libs/org.eclipse.m2m.atl.engine.emfvm.launch_3.2.1.v20110914-0724.jar')
+    compile files('libs/org.eclipse.m2m.atl.engine.emfvm_3.2.1.v20110914-0724.jar')
+}

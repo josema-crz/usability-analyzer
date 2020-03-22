@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/usability_analysis_correction/src" modelPluginID="usability_analysis_correction"
+    modelName="Usability_rules" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>usability_rules.ecore</foreignModel>
+  <genPackages prefix="Usability_rules" disposableProviderFactory="true" ecorePackage="usability_rules.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="usability_rules.ecore#//Importance">
+      <genEnumLiterals ecoreEnumLiteral="usability_rules.ecore#//Importance/Low"/>
+      <genEnumLiterals ecoreEnumLiteral="usability_rules.ecore#//Importance/Medium"/>
+      <genEnumLiterals ecoreEnumLiteral="usability_rules.ecore#//Importance/High"/>
+    </genEnums>
+    <genClasses image="false" ecoreClass="usability_rules.ecore#//NamedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute usability_rules.ecore#//NamedElement/name"/>
+    </genClasses>
+    <genClasses ecoreClass="usability_rules.ecore#//Catalogue">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference usability_rules.ecore#//Catalogue/rules"/>
+    </genClasses>
+    <genClasses ecoreClass="usability_rules.ecore#//Rule">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference usability_rules.ecore#//Rule/calculation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference usability_rules.ecore#//Rule/restriction"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference usability_rules.ecore#//Rule/correction"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference usability_rules.ecore#//Rule/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute usability_rules.ecore#//Rule/importance"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference usability_rules.ecore#//Rule/range"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute usability_rules.ecore#//Rule/elementType"/>
+    </genClasses>
+    <genClasses ecoreClass="usability_rules.ecore#//EOLCode">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute usability_rules.ecore#//EOLCode/code"/>
+    </genClasses>
+    <genClasses ecoreClass="usability_rules.ecore#//Description">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute usability_rules.ecore#//Description/definition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute usability_rules.ecore#//Description/errorMessage"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="usability_rules.ecore#//Range"/>
+    <genClasses ecoreClass="usability_rules.ecore#//DoubleRange">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute usability_rules.ecore#//DoubleRange/min"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute usability_rules.ecore#//DoubleRange/max"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute usability_rules.ecore#//DoubleRange/unit"/>
+    </genClasses>
+    <genClasses ecoreClass="usability_rules.ecore#//BooleanRange">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute usability_rules.ecore#//BooleanRange/correctValue"/>
+    </genClasses>
+    <genClasses ecoreClass="usability_rules.ecore#//StringRange">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute usability_rules.ecore#//StringRange/correctValues"/>
+    </genClasses>
+    <genClasses ecoreClass="usability_rules.ecore#//IntegerRange">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute usability_rules.ecore#//IntegerRange/min"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute usability_rules.ecore#//IntegerRange/max"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute usability_rules.ecore#//IntegerRange/unit"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

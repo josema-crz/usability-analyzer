@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+
+<!--
+	The following build script illustrates how to launch the example via ANT.
+	Ensure that External Tools Configuration specifies that the JRE to be used
+	is the same as the workspace.
+		1) Click External Tools Configuration... from the External Tools dropdown.
+		2) Select the ANT build for this build script.
+		3) Click the JRE tab.
+		4) Select the option that reads: "Run in the same JRE as the workspace."
+		5) Click Apply.
+		6) Click Run.
+-->
+
+<project default="analysis-report">
+
+	<target name="loadModels">
+		<epsilon.emf.loadModel name="Android" modelFile="model/android_original.xmi" metamodelFile="metamodel/resultEcore-ATL-Android.ecore" read="true" store="false" />
+		<!--epsilon.emf.loadModel name="GUI" modelFile="model/gui.xmi" metamodelFile="metamodel/gui.ecore" read="true" store="false" /-->
+		<epsilon.emf.loadModel name="GUI" modelFile="model/android_gui.xmi" metamodelFile="metamodel/gui.ecore" read="false" store="true" />
+		<epsilon.emf.loadModel name="UsabilityGUI" modelFile="model/usability_gui.xmi" metamodelFile="metamodel/usability_gui.ecore" read="false" store="true" />		
+		<epsilon.emf.loadModel name="AnalysisDefects" modelFile="model/gui_defects_analysis.xmi" metamodelFile="metamodel/usability_defects.ecore" read="false" store="true" />
+		<epsilon.emf.loadModel name="Catalogue" modelFile="model/catalogue.xmi" metamodelFile="metamodel/usability_rules.ecore" read="true" store="false" />
+	</target>
+	
+	<target name="android2gui" depends="loadModels">
+			<epsilon.etl src="transformation/Android2GUI.etl">
+				<model ref="Android" />
+				<model ref="GUI" />
+			</epsilon.etl>
+		</target>
+	
+	<target name="gui2usability" depends="loadModels, android2gui">
+		<epsilon.etl src="transformation/GUI2Usability.etl">
+			<model ref="GUI" />
+			<model ref="UsabilityGUI" />
+		</epsilon.etl>
+	</target>
+
+	<target name="analysis-generation" depends="loadModels">
+		<epsilon.egl src="transformation/Rules2Analysis.egl" target="transformation/Analysis.etl">
+			<model ref="Catalogue" />
+		</epsilon.egl>
+	</target>
+	
+	<target name="analysis" depends="loadModels, analysis-generation, gui2usability">
+		<epsilon.etl src="transformation/Analysis.etl">
+			<model ref="UsabilityGUI" />
+			<model ref="GUI" />
+			<model ref="AnalysisDefects" />
+		</epsilon.etl>
+	</target>		
+	
+	<target name="analysis-report" depends="loadModels, analysis">
+		<epsilon.egl src="transformation/Defects2AnalysisReport.egl" target="report/analysis-report.html">
+			<model ref="AnalysisDefects" />
+		</epsilon.egl>
+	</target>
+</project>

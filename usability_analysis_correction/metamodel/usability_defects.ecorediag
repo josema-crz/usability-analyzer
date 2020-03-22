@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmi:id="_1ULcgARuEeSVb5vMes7_qA" type="EcoreTools" measurementUnit="Pixel">
+  <children xmi:type="notation:Node" xmi:id="_1URjIARuEeSVb5vMes7_qA" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_1URjIwRuEeSVb5vMes7_qA" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_1URjJARuEeSVb5vMes7_qA" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_1USKNARuEeSVb5vMes7_qA" type="2001">
+        <element xmi:type="ecore:EAttribute" href="defects.ecore#//Evaluation/guiName"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_1USKNQRuEeSVb5vMes7_qA"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_1URjJQRuEeSVb5vMes7_qA"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_1URjJgRuEeSVb5vMes7_qA"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_1URjJwRuEeSVb5vMes7_qA"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_1USKMARuEeSVb5vMes7_qA" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_1USKMQRuEeSVb5vMes7_qA"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_1USKMgRuEeSVb5vMes7_qA"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_1USKMwRuEeSVb5vMes7_qA"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_1URjIQRuEeSVb5vMes7_qA" fontColor="4210752" fontName="Segoe UI" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="defects.ecore#//Evaluation"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1URjIgRuEeSVb5vMes7_qA" x="19" y="213"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_1USKNgRuEeSVb5vMes7_qA" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_1USKOQRuEeSVb5vMes7_qA" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_1USxQARuEeSVb5vMes7_qA" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_1USxSARuEeSVb5vMes7_qA" type="2001">
+        <element xmi:type="ecore:EAttribute" href="defects.ecore#//Defect/description"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_1USxSQRuEeSVb5vMes7_qA"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_1USxSgRuEeSVb5vMes7_qA" type="2001">
+        <element xmi:type="ecore:EAttribute" href="defects.ecore#//Defect/importance"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_1USxSwRuEeSVb5vMes7_qA"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_1USxTARuEeSVb5vMes7_qA" type="2001">
+        <element xmi:type="ecore:EAttribute" href="defects.ecore#//Defect/value"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_1USxTQRuEeSVb5vMes7_qA"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_1UTYUARuEeSVb5vMes7_qA" type="2001">
+        <element xmi:type="ecore:EAttribute" href="defects.ecore#//Defect/correctValue"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_1UTYUQRuEeSVb5vMes7_qA"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_1UTYUgRuEeSVb5vMes7_qA" type="2001">
+        <element xmi:type="ecore:EAttribute" href="defects.ecore#//Defect/usabilityRule"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_1UTYUwRuEeSVb5vMes7_qA"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_1UTYVARuEeSVb5vMes7_qA" type="2001">
+        <element xmi:type="ecore:EAttribute" href="defects.ecore#//Defect/element"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_1UTYVQRuEeSVb5vMes7_qA"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_1UTYVgRuEeSVb5vMes7_qA" type="2001">
+        <element xmi:type="ecore:EAttribute" href="defects.ecore#//Defect/corrected"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_1UTYVwRuEeSVb5vMes7_qA"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_1USxQQRuEeSVb5vMes7_qA"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_1USxQgRuEeSVb5vMes7_qA"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_1USxQwRuEeSVb5vMes7_qA"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_1USxRARuEeSVb5vMes7_qA" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_1USxRQRuEeSVb5vMes7_qA"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_1USxRgRuEeSVb5vMes7_qA"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_1USxRwRuEeSVb5vMes7_qA"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_1USKNwRuEeSVb5vMes7_qA" fontColor="4210752" fontName="Segoe UI" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="defects.ecore#//Defect"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1USKOARuEeSVb5vMes7_qA"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_1UT_YARuEeSVb5vMes7_qA" type="1005">
+    <children xmi:type="notation:Node" xmi:id="_1UT_YwRuEeSVb5vMes7_qA" type="4010"/>
+    <children xmi:type="notation:Node" xmi:id="_1UT_ZARuEeSVb5vMes7_qA" type="5008">
+      <children xmi:type="notation:Node" xmi:id="_1UT_aARuEeSVb5vMes7_qA" type="2006">
+        <element xmi:type="ecore:EEnumLiteral" href="defects.ecore#//Importance/Low"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_1UT_aQRuEeSVb5vMes7_qA"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_1UT_agRuEeSVb5vMes7_qA" type="2006">
+        <element xmi:type="ecore:EEnumLiteral" href="defects.ecore#//Importance/Medium"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_1UT_awRuEeSVb5vMes7_qA"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_1UUmcARuEeSVb5vMes7_qA" type="2006">
+        <element xmi:type="ecore:EEnumLiteral" href="defects.ecore#//Importance/High"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_1UUmcQRuEeSVb5vMes7_qA"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_1UT_ZQRuEeSVb5vMes7_qA"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_1UT_ZgRuEeSVb5vMes7_qA"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_1UT_ZwRuEeSVb5vMes7_qA"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_1UT_YQRuEeSVb5vMes7_qA" fontColor="4210752" fontName="Segoe UI" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EEnum" href="defects.ecore#//Importance"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1UT_YgRuEeSVb5vMes7_qA" x="234"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_1ULcgQRuEeSVb5vMes7_qA"/>
+  <element xmi:type="ecore:EPackage" href="defects.ecore#/"/>
+  <edges xmi:type="notation:Edge" xmi:id="_1UUmcgRuEeSVb5vMes7_qA" type="3002" source="_1URjIARuEeSVb5vMes7_qA" target="_1USKNgRuEeSVb5vMes7_qA">
+    <children xmi:type="notation:Node" xmi:id="_1UUmdgRuEeSVb5vMes7_qA" type="4011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_1UUmdwRuEeSVb5vMes7_qA" x="-13" y="-30"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_1UUmeARuEeSVb5vMes7_qA" type="4012">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_1UUmeQRuEeSVb5vMes7_qA" x="-3" y="18"/>
+    </children>
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_1UUmcwRuEeSVb5vMes7_qA" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_1UUmdARuEeSVb5vMes7_qA" fontColor="4210752" fontName="Segoe UI" fontHeight="10"/>
+    <element xmi:type="ecore:EReference" href="defects.ecore#//Evaluation/defects"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_1UUmdQRuEeSVb5vMes7_qA" points="[0, 0, 0, 60]$[0, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_1UoIcARuEeSVb5vMes7_qA" id="(0.5,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_1UoIcQRuEeSVb5vMes7_qA" id="(0.5,1.0)"/>
+  </edges>
+</notation:Diagram>

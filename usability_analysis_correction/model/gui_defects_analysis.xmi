@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ASCII"?>
+<usability_defects:Evaluation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:usability_defects="http://usability_defects/1.0" guiName="Android GUI">
+  <defects description="Too many distinct font sizes" importance="Medium" value="4 font sizes" correctValue="1-2 font sizes" usabilityRule="Font sizes" element="Android GUI"/>
+  <defects description="Low contrast between foreground and background colors" importance="High" value="1.7044491555922558 " correctValue="4.5-*" usabilityRule="Contrast" element="Button-2131361803"/>
+  <defects description="The element is too close to other elements in its container" importance="High" value="EditText-2131361796" correctValue="''" usabilityRule="Separation" element="EditText-2131361794"/>
+  <defects description="The element is too close to other elements in its container" importance="High" value="EditText-2131361794" correctValue="''" usabilityRule="Separation" element="EditText-2131361796"/>
+  <defects description="Font size is too small" importance="High" value="20.0 " correctValue="24.0-*" usabilityRule="Font size" element="Spinner-2131361795"/>
+  <defects description="The element is not  vertically aligned with other elements in its container" importance="High" value="RadioButton-2131361801" correctValue="''" usabilityRule="Vertical align" element="RadioButton-2131361800"/>
+  <defects description="The element is not  vertically aligned with other elements in its container" importance="High" value="RadioButton-2131361800" correctValue="''" usabilityRule="Vertical align" element="RadioButton-2131361801"/>
+  <defects description="The element is not horizontally aligned with other elements in its container" importance="High" value="EditText-2131361798" correctValue="''" usabilityRule="Horizontal align" element="TextView-2131361793"/>
+  <defects description="The element is not horizontally aligned with other elements in its container" importance="High" value="EditText-2131361798" correctValue="''" usabilityRule="Horizontal align" element="EditText-2131361794"/>
+  <defects description="The element is not horizontally aligned with other elements in its container" importance="High" value="EditText-2131361798" correctValue="''" usabilityRule="Horizontal align" element="EditText-2131361796"/>
+  <defects description="The element is not horizontally aligned with other elements in its container" importance="High" value="EditText-2131361798" correctValue="''" usabilityRule="Horizontal align" element="TextView-2131361797"/>
+  <defects description="The element is not horizontally aligned with other elements in its container" importance="High" value="TextView-2131361793,EditText-2131361794,EditText-2131361796,TextView-2131361797,TextView-2131361799,TextView-2131361802,Spinner-2131361795,Button-2131361803" correctValue="''" usabilityRule="Horizontal align" element="EditText-2131361798"/>
+  <defects description="The element is not horizontally aligned with other elements in its container" importance="High" value="EditText-2131361798" correctValue="''" usabilityRule="Horizontal align" element="TextView-2131361799"/>
+  <defects description="The element is not horizontally aligned with other elements in its container" importance="High" value="EditText-2131361798" correctValue="''" usabilityRule="Horizontal align" element="TextView-2131361802"/>
+  <defects description="The element is not horizontally aligned with other elements in its container" importance="High" value="EditText-2131361798" correctValue="''" usabilityRule="Horizontal align" element="Spinner-2131361795"/>
+  <defects description="The element is not horizontally aligned with other elements in its container" importance="High" value="EditText-2131361798" correctValue="''" usabilityRule="Horizontal align" element="Button-2131361803"/>
+  <defects description="This input does not have any label associated" importance="High" value="false" correctValue="true" usabilityRule="Labeled input" element="EditText-2131361796"/>
+  <defects description="Accessibility information has not been set" importance="Medium" value="false" correctValue="true" usabilityRule="Accessibility information" element="LinearLayout--1"/>
+  <defects description="Accessibility information has not been set" importance="Medium" value="false" correctValue="true" usabilityRule="Accessibility information" element="FrameLayout-16908290"/>
+  <defects description="Accessibility information has not been set" importance="Medium" value="false" correctValue="true" usabilityRule="Accessibility information" element="EditText-2131361794"/>
+  <defects description="Accessibility information has not been set" importance="Medium" value="false" correctValue="true" usabilityRule="Accessibility information" element="EditText-2131361796"/>
+</usability_defects:Evaluation>

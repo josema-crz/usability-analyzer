@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="ASCII"?>
+<usability_rules:Catalogue
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:usability_rules="http://usability_rules/1.0"
+    name="TestEvaluator">
+  <rules name="Font sizes"
+      importance="Medium"
+      elementType="GUI">
+    <calculation
+        code="return UsabilityGUI!Text.allInstances().collect(t|t.size).asSet().size();"/>
+    <correction
+        code="&#xD;&#xA;&#x9;&#x9;&#x9;var maxSizes = 2;&#xD;&#xA;&#x9;&#x9;&#x9;var validSizes : Set;&#xD;&#xA;&#x9;&#x9;&#x9;for (t in UsabilityGUI!Text.allInstances()) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;if (validSizes.size() &lt; maxSizes) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;// We collect valid sizes until reaching the limit&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;validSizes.add(t.size);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;else if (not validSizes.includes(t.size)) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;// We get the closest valid size&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;var newSize = validSizes.sortBy(s|(t.size-s).abs()).first();&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;// We set the new size&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;t.guiElement.font.size = newSize;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;}"/>
+    <description
+        definition="Checks the number of distinct font sizes within the interface"
+        errorMessage="Too many distinct font sizes"/>
+    <range xsi:type="usability_rules:IntegerRange"
+        min="1"
+        max="2"
+        unit="font sizes"/>
+  </rules>
+  <rules name="Tabfocus"
+      importance="Medium"
+      elementType="Container">
+    <calculation
+        code="&#xD;&#xA;&#x9;&#x9;&#x9;// Tabfocus in the panel sorted by its value&#xD;&#xA;&#x9;&#x9;&#x9;var orderedTabfocus = usabilityElement.content.select(elem | elem.isTypeOf(UsabilityGUI!Tabfocus)).sortBy(elem | elem.value);&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;var errors = '';&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;// If there are no elements with tabfocus property, we finish&#xD;&#xA;&#x9;&#x9;&#x9;if (orderedTabfocus.size() == 0) return errors;&#xD;&#xA;&#x9;&#x9;&#x9;// The first tabfocus defined must be zero&#xD;&#xA;&#x9;&#x9;&#x9;if (orderedTabfocus.first().value &lt;> 0) errors = errors + 'The first tabfocus defined must be zero. ';&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;for (i in Sequence{1..orderedTabfocus.size()-1}) {&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;var tabfocus = orderedTabfocus.at(i);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;var previousTabfocus = orderedTabfocus.at(i-1);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;// The tabfocus number must be incremental, no gaps&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;if (tabfocus.value &lt;> previousTabfocus.value + 1) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;errors = errors + 'The tabfocus number must be incremental, no gaps or repetitions. ';&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;// The element must be around the same vertical position or lower than its predecessor&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;if (previousTabfocus.box.position.y - tabfocus.box.position.y > 5) {&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;errors = errors + 'The element ' + tabfocus.guiElement.name + ' is higher than its predecessor. ';&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;// If it's around the same vertical position, it must be on the right of its predecessor&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;var verticalDifference = (tabfocus.box.position.y - previousTabfocus.box.position.y).abs();&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;if (verticalDifference &lt;= 5 and tabfocus.box.position.x &lt; previousTabfocus.box.position.x) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;errors = errors + 'The element ' + tabfocus.guiElement.name + ' is around the same vertical position but on the left of its predecessor';&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;}&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;return errors;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;"/>
+    <description
+        definition="Checks if the tabfocus property has been set in a proper, consistent way on the elements inside a panel"
+        errorMessage="Tabfocus property has not been set correctly on the elements of the panel"/>
+    <range xsi:type="usability_rules:StringRange"
+        correctValues="''"/>
+  </rules>
+  <rules name="Contrast"
+      importance="High"
+      elementType="Color">
+    <calculation
+        code="return (usabilityElement.background.getLuminance().max(usabilityElement.foreground.getLuminance())+0.05)/(usabilityElement.background.getLuminance().min(usabilityElement.foreground.getLuminance())+0.05);"/>
+    <restriction
+        code="return usabilityElement.foreground.isDefined() and usabilityElement.background.isDefined();"/>
+    <description
+        definition="Checks the contrast between an element&#xb4;s foreground and background color"
+        errorMessage="Low contrast between foreground and background colors"/>
+    <range xsi:type="usability_rules:DoubleRange"
+        min="4.5"
+        max="-1.0"/>
+  </rules>
+  <rules name="Separation"
+      importance="High"
+      elementType="Box">
+    <calculation
+        code="return usabilityElement.container.content.select(e2|e2.isTypeOf(UsabilityGUI!Box) and e2&lt;>usabilityElement and not((usabilityElement.position.x - (e2.position.x+e2.dimension.x) >= 5) or (e2.position.x - (usabilityElement.position.x+usabilityElement.dimension.x) >= 5) or (usabilityElement.position.y - (e2.position.y+e2.dimension.y) >= 5) or (e2.position.y - (usabilityElement.position.y+usabilityElement.dimension.y) >= 5))).collect(e2|e2.guiElement.name).concat(',');"/>
+    <restriction
+        code="return usabilityElement.container.isDefined();"/>
+    <correction
+        code="&#xD;&#xA;&#x9;&#x9;&#x9;var minDistance = 5;&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;// We get the conflicting elements&#xD;&#xA;&#x9;&#x9;&#x9;var elements = usabilityElement.container.content.select(e2|e2.isTypeOf(UsabilityGUI!Box) and e2&lt;>usabilityElement and not((usabilityElement.position.x - (e2.position.x+e2.dimension.x) >= minDistance) or (e2.position.x - (usabilityElement.position.x+usabilityElement.dimension.x) >= minDistance) or (usabilityElement.position.y - (e2.position.y+e2.dimension.y) >= minDistance) or (e2.position.y - (usabilityElement.position.y+usabilityElement.dimension.y) >= minDistance)));&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;// For each of them:&#xD;&#xA;&#x9;&#x9;&#x9;for (other : UsabilityGUI!Box in elements) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;// We get the distances between the different edges&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;var right =&#x9;other.position.x - (usabilityElement.position.x + usabilityElement.dimension.x);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;var left = (other.position.x + other.dimension.x) - usabilityElement.position.x;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;var bottom = other.position.y - (usabilityElement.position.y + usabilityElement.dimension.y);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;var top = (other.position.y + other.dimension.y) - usabilityElement.position.y;&#xD;&#xA;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;// We get the minimum&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;var min = Sequence{right, left, bottom, top}.sortBy(v|v.abs()).first();&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;// We move the other element in that direction&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;switch (min) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;case right : other.guiElement.position.x = other.position.x - min + minDistance;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;case left : other.guiElement.position.x = other.position.x - min - minDistance;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;case bottom : other.guiElement.position.y = other.position.y - min + minDistance;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;case top : other.guiElement.position.y =  other.position.y - min - minDistance;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;      &#x9;&#x9;&#x9;other.position.x = other.guiElement.position.x;&#xD;&#xA;      &#x9;&#x9;&#x9;other.position.y = other.guiElement.position.y;&#xD;&#xA;&#x9;&#x9;&#x9;}&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;"/>
+    <description
+        definition="Checks the separation between an element and the rest inside the same container"
+        errorMessage="The element is too close to other elements in its container"/>
+    <range xsi:type="usability_rules:StringRange"
+        correctValues="''"/>
+  </rules>
+  <rules name="Font types"
+      importance="High"
+      elementType="GUI">
+    <calculation
+        code="return UsabilityGUI!Text.allInstances().collect(t|t.font).asSet().size();"/>
+    <correction
+        code="&#xD;&#xA;&#x9;&#x9;&#x9;var maxTypes = 2;&#xD;&#xA;&#x9;&#x9;&#x9;var validTypes : Set;&#xD;&#xA;&#x9;&#x9;&#x9;for (t in UsabilityGUI!Text.allInstances()) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;if (validTypes.size() &lt; maxTypes) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;// We collect valid types until reaching the limit&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;validTypes.add(t.font);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;else if (not validTypes.includes(t.font)) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;// We get the first font type&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;var newType = validTypes.first();&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;// We set the new size&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;t.guiElement.font.family = newType;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;}&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;"/>
+    <description
+        definition="Checks the number of distinct font types used in the interface"
+        errorMessage="Too many distinct font types"/>
+    <range xsi:type="usability_rules:IntegerRange"
+        min="1"
+        max="2"
+        unit="font types"/>
+  </rules>
+  <rules name="Label input separation"
+      importance="Medium"
+      elementType="Input">
+    <calculation
+        code="return (usabilityElement.box.position.x-(usabilityElement.label.box.position.x+usabilityElement.label.box.dimension.x)).max(usabilityElement.box.position.y-(usabilityElement.label.box.position.y+usabilityElement.label.box.dimension.y));"/>
+    <restriction
+        code="return usabilityElement.label.isDefined();"/>
+    <correction
+        code="&#xD;&#xA;&#x9;&#x9;&#x9;var horizontal = usabilityElement.box.position.x-(usabilityElement.label.box.position.x+usabilityElement.label.box.dimension.x);&#xD;&#xA;&#x9;&#x9;&#x9;var vertical = usabilityElement.box.position.y-(usabilityElement.label.box.position.y+usabilityElement.label.box.dimension.y);&#xD;&#xA;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;if (horizontal > vertical) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;usabilityElement.label.box.position.x = usabilityElement.label.box.position.x + (horizontal - 30);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;usabilityElement.label.guiElement.position.x = usabilityElement.label.box.position.x;&#xD;&#xA;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;else {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;usabilityElement.label.box.position.y = usabilityElement.label.box.position.y + (vertical -30);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;usabilityElement.label.guiElement.position.y = usabilityElement.label.box.position.y;&#xD;&#xA;&#x9;&#x9;&#x9;}&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;"/>
+    <description
+        definition="Checks the separation between an input field and its corresponding label"
+        errorMessage="The label is too far from its input field"/>
+    <range xsi:type="usability_rules:IntegerRange"
+        max="25"
+        unit="dp"/>
+  </rules>
+  <rules name="Menu depth"
+      importance="Medium"
+      elementType="Menu">
+    <calculation
+        code="&#xD;&#xA;&#x9;&#x9;&#x9;var stack = new Sequence;&#xD;&#xA;&#x9;&#x9;&#x9;stack.add(usabilityElement);&#xD;&#xA;&#x9;&#x9;&#x9;var depth = 0;&#xD;&#xA;&#x9;&#x9;&#x9;var maxDepth = 0;&#xD;&#xA;&#x9;&#x9;&#x9;var count = 0;&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;while(not stack.isEmpty()) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;var last = stack.last();&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;stack.remove(last);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;// Extraction of an already explored father&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;if (last.isKindOf(Real)) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;depth = depth - 1;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;else if (not last.items.isEmpty()) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;// We replace a father by a number&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;stack.add(count);   &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;stack.addAll(last.items);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;depth = depth + 1;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if (depth > maxDepth)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;maxDepth = depth;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;count = count + 1;&#xD;&#xA;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;return maxDepth;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;"/>
+    <description
+        definition="Checks the maximum depth of the menu structure"
+        errorMessage="Menu structure is too deep"/>
+    <range xsi:type="usability_rules:IntegerRange"
+        min="1"
+        max="3"
+        unit="levels"/>
+  </rules>
+  <rules name="Label text length"
+      importance="Medium"
+      elementType="Label">
+    <calculation
+        code="return usabilityElement.text.text.length();"/>
+    <correction
+        code="usabilityElement.guiElement.text = usabilityElement.text.text.substring(0, 49);"/>
+    <description
+        definition="Checks whether the text of a label is too long or not"
+        errorMessage="Label text is too long"/>
+    <range xsi:type="usability_rules:IntegerRange"
+        min="1"
+        max="50"
+        unit="characters"/>
+  </rules>
+  <rules name="Font size"
+      importance="High"
+      elementType="Text">
+    <calculation
+        code="return usabilityElement.size;"/>
+    <correction
+        code="usabilityElement.guiElement.font.size = 10.0;"/>
+    <description
+        definition="Checks the minimum font size for any text element"
+        errorMessage="Font size is too small"/>
+    <range xsi:type="usability_rules:DoubleRange"
+        min="24.0"
+        max="-1.0"/>
+  </rules>
+  <rules name="Vertical align"
+      importance="High"
+      elementType="Box">
+    <calculation
+        code="&#xD;&#xA;&#x9;&#x9;&#x9;var margin = 10;&#xD;&#xA;&#x9;&#x9;&#x9;return usabilityElement.container.content.select(e2|e2.isTypeOf(UsabilityGUI!Box) and e2&lt;>usabilityElement and (((usabilityElement.position.y-e2.position.y).abs()>0 and (usabilityElement.position.y-e2.position.y).abs()&lt;margin) or (((usabilityElement.position.y+usabilityElement.dimension.y) - (e2.position.y+e2.dimension.y)).abs()>0 and ((usabilityElement.position.y+usabilityElement.dimension.y) - (e2.position.y+e2.dimension.y)).abs()&lt;margin))).collect(e2|e2.guiElement.name).concat(',');&#x9;&#xD;&#xA;&#x9;&#x9;"/>
+    <restriction
+        code="return usabilityElement.container.isDefined();"/>
+    <correction
+        code="&#xD;&#xA;&#x9;&#x9;&#x9;// We get the not aligned elements&#xD;&#xA;&#x9;&#x9;&#x9;var margin = 10;&#xD;&#xA;&#x9;&#x9;&#x9;var elements = usabilityElement.container.content.select(e2|e2.isTypeOf(UsabilityGUI!Box) and e2&lt;>usabilityElement and (((usabilityElement.position.y-e2.position.y).abs()>0 and (usabilityElement.position.y-e2.position.y).abs()&lt;margin) or (((usabilityElement.position.y+usabilityElement.dimension.y) - (e2.position.y+e2.dimension.y)).abs()>0 and ((usabilityElement.position.y+usabilityElement.dimension.y) - (e2.position.y+e2.dimension.y)).abs()&lt;margin)));&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;// For each of them:&#xD;&#xA;&#x9;&#x9;&#x9;for (other : UsabilityGUI!Box in elements) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;// We get the minimum distance between the vertical positions (top or bottom)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;var top =&#x9;usabilityElement.position.y-other.position.y;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;var bottom = (usabilityElement.position.y+usabilityElement.dimension.y) - (other.position.y+other.dimension.y);&#xD;&#xA;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;// We get the minimum&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;var min = Sequence{top, bottom}.sortBy(v|v.abs()).first();&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;// We move the other element in that direction&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;other.position.y = other.position.y + min;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;other.guiElement.position.y = other.position.y;&#xD;&#xA;&#x9;&#x9;&#x9;}&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;"/>
+    <description
+        definition="Checks if an element is vertically aligned with the rest of elements in its container"
+        errorMessage="The element is not  vertically aligned with other elements in its container"/>
+    <range xsi:type="usability_rules:StringRange"
+        correctValues="''"/>
+  </rules>
+  <rules name="Horizontal align"
+      importance="High"
+      elementType="Box">
+    <calculation
+        code="&#xD;&#xA;&#x9;&#x9;&#x9;var margin = 40;&#xD;&#xA;&#x9;&#x9;&#x9;return usabilityElement.container.content.select(e2|e2.isTypeOf(UsabilityGUI!Box) and e2&lt;>usabilityElement and (((usabilityElement.position.x-e2.position.x).abs()>0 and (usabilityElement.position.x-e2.position.x).abs()&lt;margin) or (((usabilityElement.position.x+usabilityElement.dimension.x) - (e2.position.x+e2.dimension.x)).abs()>0 and ((usabilityElement.position.x+usabilityElement.dimension.x) - (e2.position.x+e2.dimension.x)).abs()&lt;margin))).collect(e2|e2.guiElement.name).concat(',');&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;"/>
+    <restriction
+        code="return usabilityElement.container.isDefined();"/>
+    <correction
+        code="&#xD;&#xA;&#x9;&#x9;&#x9;// We get the not aligned elements&#xD;&#xA;&#x9;&#x9;&#x9;var margin = 40;&#xD;&#xA;&#x9;&#x9;&#x9;var elements = usabilityElement.container.content.select(e2|e2.isTypeOf(UsabilityGUI!Box) and e2&lt;>usabilityElement and (((usabilityElement.position.x-e2.position.x).abs()>0 and (usabilityElement.position.x-e2.position.x).abs()&lt;margin) or (((usabilityElement.position.x+usabilityElement.dimension.x) - (e2.position.x+e2.dimension.x)).abs()>0 and ((usabilityElement.position.x+usabilityElement.dimension.x) - (e2.position.x+e2.dimension.x)).abs()&lt;margin)));&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;// For each of them:&#xD;&#xA;&#x9;&#x9;&#x9;for (other : UsabilityGUI!Box in elements) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;// We get the minimum distance between the horizontal positions (left or right)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;var left =&#x9;usabilityElement.position.x-other.position.x;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;var right = (usabilityElement.position.x+usabilityElement.dimension.x) - (other.position.x+other.dimension.x);&#x9;&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;// We get the minimum&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;var min = Sequence{right, left}.sortBy(v|v.abs()).first();&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;// We move the other element in that direction&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;other.position.x = other.position.x + min;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;other.guiElement.position.x = other.position.x;&#xD;&#xA;&#x9;&#x9;&#x9;}&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;"/>
+    <description
+        definition="Checks if an element is horizontally aligned with the rest of elements in its container"
+        errorMessage="The element is not horizontally aligned with other elements in its container"/>
+    <range xsi:type="usability_rules:StringRange"
+        correctValues="''"/>
+  </rules>
+  <rules name="Number of elements"
+      elementType="Container">
+    <calculation
+        code="return usabilityElement.content.select(b|b.isTypeOf(UsabilityGUI!Box)).size();"/>
+    <description
+        definition="Checks the total number of elements in a container"
+        errorMessage="Too many elements in this container"/>
+    <range xsi:type="usability_rules:IntegerRange"
+        max="20"
+        unit="elements"/>
+  </rules>
+  <rules name="Labeled input"
+      importance="High"
+      elementType="Input">
+    <calculation
+        code="return usabilityElement.label.isDefined();"/>
+    <description
+        definition="Checks if an input has its corresponding label"
+        errorMessage="This input does not have any label associated"/>
+    <range xsi:type="usability_rules:BooleanRange"
+        correctValue="true"/>
+  </rules>
+  <rules name="Accessibility information"
+      importance="Medium"
+      elementType="AccessibilityInformation">
+    <calculation
+        code="return usabilityElement.info.length()>0;"/>
+    <description
+        definition="Checks if accessibility information has been set for an element"
+        errorMessage="Accessibility information has not been set"/>
+    <range xsi:type="usability_rules:BooleanRange"
+        correctValue="true"/>
+  </rules>
+  <rules name="Tooltip"
+      elementType="Tooltip">
+    <calculation
+        code="return usabilityElement.text.length() > 0;"/>
+    <description
+        definition="Checks if tooltip text has been set for an element"
+        errorMessage="Tooltip text has not been set"/>
+    <range xsi:type="usability_rules:BooleanRange"
+        correctValue="true"/>
+  </rules>
+  <rules name="Overlap"
+      importance="High"
+      elementType="Box">
+    <calculation
+        code="return usabilityElement.container.content.select(e2|e2.isTypeOf(UsabilityGUI!Box) and e2&lt;>usabilityElement and not((usabilityElement.position.x >= (e2.position.x+e2.dimension.x)) or ((usabilityElement.position.x+usabilityElement.dimension.x) &lt;= e2.position.x) or (usabilityElement.position.y >= (e2.position.y+e2.dimension.y)) or ((usabilityElement.position.y+usabilityElement.dimension.y) &lt;= e2.position.y))).collect(e2|e2.guiElement.name).concat(',');"/>
+    <restriction
+        code="return usabilityElement.container.isDefined();"/>
+    <correction
+        code="&#xD;&#xA;&#x9;&#x9;&#x9;// We get the overlapped elements&#xD;&#xA;&#x9;&#x9;&#x9;var elements = usabilityElement.container.content.select(e2|e2.isTypeOf(UsabilityGUI!Box) and e2&lt;>usabilityElement and not((usabilityElement.position.x >= (e2.position.x+e2.dimension.x)) or ((usabilityElement.position.x+usabilityElement.dimension.x) &lt;= e2.position.x) or (usabilityElement.position.y >= (e2.position.y+e2.dimension.y)) or ((usabilityElement.position.y+usabilityElement.dimension.y) &lt;= e2.position.y)));&#xD;&#xA;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;// For each of them:&#xD;&#xA;&#x9;&#x9;&#x9;for (other : UsabilityGUI!Box in elements) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;// We get the distances between the different edges&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;var right =&#x9;other.position.x - (usabilityElement.position.x + usabilityElement.dimension.x);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;var left = (other.position.x + other.dimension.x) - usabilityElement.position.x;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;var bottom = other.position.y - (usabilityElement.position.y + usabilityElement.dimension.y);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;var top = (other.position.y + other.dimension.y) - usabilityElement.position.y;&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;// We get the minimum&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;var min = Sequence{right, left, bottom, top}.sortBy(v|v.abs()).first();&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;// We move the other element in that direction&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;if (right == min or left == min) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;other.position.x = other.position.x - min;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;other.guiElement.position.x = other.position.x;&#xD;&#xA;      &#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;else {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;other.position.y = other.position.y - min;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;other.guiElement.position.y = other.position.y;&#xD;&#xA;      &#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;}&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;"/>
+    <description
+        definition="Checks if the element overlaps other elements in its container"
+        errorMessage="This element overlaps other elements in its container"/>
+    <range xsi:type="usability_rules:StringRange"
+        correctValues="''"/>
+  </rules>
+</usability_rules:Catalogue>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es" class="no-js">
+	<head>
+		<meta charset="UTF-8">
+
+		<title>Usability analysis</title>
+		<meta name="description" content="Report listing the usability defects found in the GUI.">
+		<meta name="author" content="José Manuel Cruz Zapata">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="stylesheet" href="css/main.css">
+		
+		<style type="text/css">
+			body
+			{
+				font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;				
+			}
+			h1
+			{				
+				font-size: 16px;
+				margin: 15px;
+				text-align: center;
+			}				
+			h2
+			{				
+				font-size: 13px;
+				margin: 15px;
+				text-align: center;
+			}
+			#subtitle
+			{
+				font-size: 12px;
+				text-align: center;
+			}
+			#usability-defects 
+			{
+				font-size: 12px;
+				margin: 45px auto;
+				width: 80%;
+				text-align: left;
+				border-collapse: collapse;
+			}
+			caption
+			{
+				display: none;
+			}
+			#usability-defects th
+			{
+				font-size: 14px;
+				font-weight: bold;
+				padding: 10px 8px;
+				color: #039;
+				background: #b9c9fe
+			}
+			#usability-defects td
+			{
+				padding: 8px;
+				color: #669;
+			}
+			#usability-defects tr:nth-child(even)
+			{
+				background: #e8edff; 
+			}
+			#usability-defects tr:hover td
+			{
+				background: #d0dafd;
+				color: #339;
+			}
+			#usability-defects td:nth-child(2), #usability-defects td:nth-child(4)
+			{
+				font-weight: bold;
+			}
+			.Low {
+				color: #e6c700;
+			}
+			.Medium {
+				color: #e38d00;
+			}
+			.High {
+				color: #bb3131;
+			}
+	</style>		
+		
+	</head>
+
+	<body>
+		<h1>Usability analysis</h1>
+		<h2>Target GUI: [%=AnalysisDefects!Evaluation.allInstances().first().guiName%]</h2>
+		[% if (AnalysisDefects!Defect.allInstances().isEmpty()) { %]
+		<p id="subtitle">No usability defects have been found</p>
+		[% } else { %]
+		<p id="subtitle">Some usability defects have been detected</p>
+		<table id="usability-defects" summary="table containing the usability defects found in the GUI" >
+			<caption>
+				Usability defects
+			</caption>	
+			<thead>
+				<tr>
+					<th scope="col">Importance</th>
+					<th scope="col">Usability rule</th>
+					<th scope="col">Description</th>
+					<th scope="col">Element</th>
+					<th scope="col">Correct value</th>
+					<th scope="col">Current value</th>
+				</tr>
+			</thead>
+	
+			<tfoot>	        	
+			</tfoot>	
+	
+			<tbody>				
+				[% for (defect in AnalysisDefects!Defect.allInstances()) { %]
+				<tr>
+					<td><span class="[%=defect.importance%]">[%=defect.importance%]</span></td>
+					<td>[%=defect.usabilityRule%]</td>
+					<td>[%=defect.description%]</td>
+					<td>[%=defect.element%]</td>
+					<td>[%=defect.correctValue%]</td>
+					<td>[%=defect.value%]</td>
+				</tr>
+				[% } %]				
+			</tbody>
+		</table>
+		[% } %]
+	</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,267 @@
+pre init {
+	var assignedLabels = new Set;
+}
+
+
+rule GUI
+    transform gui : GUI!GUI
+	to usability_gui : UsabilityGUI!GUI { 	
+			
+		usability_gui.guiElement = gui;
+		usability_gui.elements ::= gui.windows;
+	}
+	
+
+// A lazy and greedy rule for each property of a component
+// After that each widget and container defines lazy rules for its particular properties
+
+@greedy
+@lazy
+rule Box
+	transform component : GUI!Component
+	to box : UsabilityGUI!Box	   
+	{	
+	guard: component.dimension.isDefined() and component.position.isDefined()
+	
+		box.dimension ::= component.dimension;
+		box.position ::= component.position;
+		if (component.container.isDefined()) {
+			box.container = component.container.equivalents().
+								selectOne(e|e.isTypeOf(UsabilityGUI!Container));
+		}
+		box.guiElement = component;
+	}
+	
+@greedy
+@lazy
+rule Color
+	transform component : GUI!Component
+	to color : UsabilityGUI!Color	   
+	{
+	guard: component.color.isDefined()
+	
+		color.background = component.color.background;
+		color.foreground = component.color.foreground;
+		color.guiElement = component;
+	}
+
+@greedy
+@lazy
+rule Tabfocus
+	transform component : GUI!Component
+	to tabfocus : UsabilityGUI!Tabfocus
+	{
+	guard: component.tabfocus.isDefined()
+	
+		tabfocus.value = component.tabfocus.value;
+		tabfocus.box = component.equivalent("Box");
+		tabfocus.guiElement = component;	
+	}
+	
+@greedy
+@lazy
+rule Tooltip
+	transform component : GUI!Component
+	to tooltip : UsabilityGUI!Tooltip
+	{
+	guard: component.tooltipText.isDefined()
+	
+		tooltip.text = component.tooltipText.text;
+		tooltip.guiElement = component;	
+	}
+	
+@greedy
+@lazy
+rule AccessibilityInformation
+	transform component : GUI!Component
+	to accessibilityInformation : UsabilityGUI!AccessibilityInformation
+	{
+	guard: component.accessibilityInfo.isDefined()
+	
+		accessibilityInformation.info = component.accessibilityInfo.text;
+		accessibilityInformation.guiElement = component;	
+	}
+
+
+@lazy
+rule Dimension
+	transform guiDimension : GUI!Dimension
+	to usabilityDimension : UsabilityGUI!Dimension {
+	
+		usabilityDimension.x = guiDimension.width;
+		usabilityDimension.y = guiDimension.height;			
+	}
+
+@lazy
+rule Position
+	transform guiPosition : GUI!Position
+	to usabilityPosition : UsabilityGUI!Position {
+	
+		usabilityPosition.x = guiPosition.x;
+		usabilityPosition.y = guiPosition.y;			
+	}
+
+
+@lazy
+@greedy
+rule Container
+	transform component : GUI!Container
+	to container : UsabilityGUI!Container 
+	{
+		container.guiElement = component;
+		
+		container.content ::= component.content;
+	}
+
+@lazy
+rule Panel
+	transform component : GUI!Panel
+	to text : UsabilityGUI!Text
+	{
+		text.text = component.title;
+		text.font = component.font.family;
+		text.size = component.font.size;
+		text.guiElement = component;	
+	}
+
+@lazy
+rule Button
+	transform component : GUI!Button
+	to text : UsabilityGUI!Text
+	{		
+		text.text = component.text;
+		text.font = component.font.family;
+		text.size = component.font.size;
+		text.guiElement = component;
+	}
+
+@lazy
+rule Label
+	transform component : GUI!Label
+	to text : UsabilityGUI!Text, 
+	   label : UsabilityGUI!Label
+	{		
+		text.text = component.text;
+		text.font = component.font.family;
+		text.size = component.font.size;
+		text.guiElement = component;
+		
+		label.box = component.equivalent("Box");
+		label.text = text;
+		label.guiElement = component;
+	}
+	
+@lazy
+rule Input
+	transform component : GUI!Input
+	to text : UsabilityGUI!Text, 
+	   input : UsabilityGUI!Input
+	{		
+		text.text = component.text;
+		text.font = component.font.family;
+		text.size = component.font.size;
+		text.guiElement = component;
+		
+		input.box = component.equivalent("Box");
+		input.guiElement = component;
+		
+		// Input-label association
+		// We search for the closest label, among the labels not assigned yet and close enough, on the top or on the left of the input		
+		var selectedLabel =		
+		component.container.content.select(label|label.isTypeOf(GUI!Label) and not assignedLabels.includes(label) and 
+			((component.position.y-(label.position.y+label.dimension.height)<=20 and component.position.y-(label.position.y+label.dimension.height)>=-5 and (component.position.x-label.position.x).abs()<=25) 
+			or
+			((component.position.y-label.position.y).abs()<=18 and component.position.x-(label.position.x+label.dimension.width)<=100 and component.position.x-(label.position.x+label.dimension.width)>=-10))
+			
+			).sortBy(label|(component.position.x-(label.position.x+label.dimension.width)).abs()
+			.min((component.position.y-(label.position.y+label.dimension.height)).abs())).first();
+			
+		if (selectedLabel <> null) {
+			input.label = selectedLabel.equivalents().selectOne(e|e.isTypeOf(UsabilityGUI!Label));
+			assignedLabels.add(selectedLabel);
+		}
+	}
+	
+@lazy
+rule RadioButton
+	transform component : GUI!RadioButton
+	to text : UsabilityGUI!Text
+	{		
+		text.text = component.text;
+		text.font = component.font.family;
+		text.size = component.font.size;
+		text.guiElement = component;
+	}
+	
+@lazy
+rule CheckBox
+	transform component : GUI!CheckBox
+	to text : UsabilityGUI!Text
+	{		
+		text.text = component.text;
+		text.font = component.font.family;
+		text.size = component.font.size;
+		text.guiElement = component;
+	}
+	
+@lazy
+rule Menu
+	transform component : GUI!Menu
+	to menu : UsabilityGUI!Menu
+	{		
+		menu.guiElement = component;
+		menu.items ::= component.items;
+	}
+	
+@lazy
+rule MenuItem
+	transform component : GUI!MenuItem
+	to menuItem : UsabilityGUI!MenuItem
+	{
+		menuItem.items ::= component.items;
+	}
+	
+@lazy
+rule ComboBox
+	transform component : GUI!ComboBox
+	to container : UsabilityGUI!Container,
+	   text: UsabilityGUI!Text
+	{		
+		container.guiElement = component;
+		container.content ::= component.items;
+		
+		text.font = component.font.family;
+		text.size = component.font.size;
+		text.guiElement = component;
+	}
+	
+@lazy
+rule ComboBoxItem
+	transform component : GUI!ComboBoxItem
+	to text : UsabilityGUI!Text
+	{		
+		text.text = component.text;
+		text.font = component.container.font.family;
+		text.size = component.container.font.size;
+		text.guiElement = component;
+	}
+	
+@lazy
+rule `List`
+	transform component : GUI!`List`
+	to container : UsabilityGUI!Container
+	{		
+		container.guiElement = component;
+		container.content ::= component.items;
+	}
+	
+@lazy
+rule ListItem
+	transform component : GUI!ListItem
+	to text : UsabilityGUI!Text
+	{		
+		text.text = component.text;
+		text.font = component.container.font.family;
+		text.size = component.container.font.size;
+		text.guiElement = component;
+	}
